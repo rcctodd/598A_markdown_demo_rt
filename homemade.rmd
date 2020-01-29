@@ -1,0 +1,72 @@
+---
+title: "My RMD document"
+author: "Richard Todd"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: bookdown::html_document2
+references:
+- id: marwick2020
+  title: reproducibility en masse
+  author:
+  - family: Marwick
+    given: Benedict
+  container-title: Nature Materials
+  volume: 11
+  URL: 'http://dx.doi.org/10.1038/nmat3283'
+  DOI: 10.1038/nmat3283
+  issue: 4
+  publisher: AWS Journal club
+  page: 261-263
+  type: article-journal
+  issued:
+    year: 2012
+    month: 3
+- id: zach2019
+  title: clowns and clowning
+  author:
+  - family: Winegarden
+    given: Thomas
+  container-title: Eggs benedict
+  volume: 11
+  URL: 'http://dx.doi.org/10.1038/nmat3283'
+  DOI: 10.1038/nmat3283
+  issue: 4
+  publisher: Lovely jubbly
+  page: 261-263
+  type: article-journal
+  issued:
+    year: 2012
+    month: 3
+
+
+---
+
+2) I have determined that the sum of two and two is: `r 2+2`
+
+3) 
+
+```{r, starwars-plot, fig.cap = "Star Wars character mass vs height"}
+library(tidyverse)
+ggplot(starwars,aes(x=height,y=mass)) + geom_point()
+
+```
+
+Look at Figure \@ref(fig:starwars-plot)!
+
+4) 
+```{r, starwars-table, fig.cap = "Star Wars mass and unique species by planet"}
+
+head(starwars %>%
+  group_by(homeworld) %>%
+  summarise(total_mass = sum(mass),no_species = n_distinct(species))%>%
+  knitr::kable(caption = "a bad table"),10)
+
+```
+That was fun.  Now look at Table \@ref(fig:starwars-table)!
+
+```{r piccy, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics("star_wars_new.jpg")
+```
+
+Figure \@ref(fig:piccy) is a nice picture!
+knitr::kable
+For more interesting stuff, [see @marwick2020] or [see @zach2019] 
