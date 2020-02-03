@@ -44,7 +44,7 @@ references:
 
 3) 
 
-```{r, starwars-plot, fig.cap = "Star Wars character mass vs height"}
+```{r, starwars-plot, echo=FALSE, fig.cap = "Star Wars character mass vs height"}
 library(tidyverse)
 ggplot(starwars,aes(x=height,y=mass)) + geom_point()
 
@@ -53,15 +53,17 @@ ggplot(starwars,aes(x=height,y=mass)) + geom_point()
 Look at Figure \@ref(fig:starwars-plot)!
 
 4) 
-```{r, starwars-table, fig.cap = "Star Wars mass and unique species by planet"}
+```{r, starwarstable, echo=FALSE, fig.cap = "Star Wars mass and unique species by planet"}
 
-head(starwars %>%
+knitr::kable(head(starwars %>%
   group_by(homeworld) %>%
-  summarise(total_mass = sum(mass),no_species = n_distinct(species))%>%
-  knitr::kable(caption = "a bad table"),10)
+  summarise(total_mass = sum(mass),no_species = n_distinct(species)),10),
+  caption = "a bad table")
 
 ```
-That was fun.  Now look at Table \@ref(fig:starwars-table)!
+That was fun.
+
+Now look at Table \@ref(tab:starwarstable)!
 
 ```{r piccy, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics("star_wars_new.jpg")
